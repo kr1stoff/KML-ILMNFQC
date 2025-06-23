@@ -2,6 +2,7 @@ import click
 from pathlib import Path
 
 from src.kml_ilmnfqc.sample import get_sample_path_dict
+from src.kml_ilmnfqc.fastqc import run_fastqc
 
 
 @click.command()
@@ -15,3 +16,4 @@ def main(input_dir, output_dir, threads, force):
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)
     sample_path_dict = get_sample_path_dict(input_dir)
+    run_fastqc(sample_path_dict, output_dir, threads, force)

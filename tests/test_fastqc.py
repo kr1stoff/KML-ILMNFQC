@@ -11,5 +11,4 @@ outdir = Path(outdir)
 threads = 32
 fqptdict = get_sample_path_dict(indir)
 
-# run_fastqc(fqptdict, outdir, threads, False)
-print(is_fastqc_done(fqptdict, outdir / "fastqc"))
+run_fastqc(fqptdict, outdir, threads, False)
