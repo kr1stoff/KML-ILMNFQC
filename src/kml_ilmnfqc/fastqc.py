@@ -16,7 +16,7 @@ def run_fastqc(fqpath_dict: dict, output_dir: Path, threads: int, force: bool) -
     logging.info("运行 FastQC")
     fqc_dir = output_dir / "fastqc"
     fqc_dir.mkdir(exist_ok=True, parents=True)
-    # ! 如果已经运行过或不是强制, 则跳过
+    # * 如果已经运行过或不是强制, 则跳过
     if not force and is_fastqc_done(fqpath_dict, fqc_dir):
         logging.warning("FastQC 已完成, 跳过")
         return
