@@ -32,8 +32,8 @@ def run_fastp(fqpath_dict: dict, output_dir: Path, threads: int, force: bool = F
         {FASTP} --thread {sgl_thrd_num} \
             -i {fq1} -I {fq2} \
             -o {fastp_dir}/{samp}.clean.1.fastq.gz -O {fastp_dir}/{samp}.clean.2.fastq.gz \
-            --html {fastp_dir}/{samp}.fastp.html \
-            --json {fastp_dir}/{samp}.fastp.json
+            --html {fastp_dir}/{samp}.html \
+            --json {fastp_dir}/{samp}.json
         rm -f {fastp_dir}/{samp}.clean.1.fastq.gz {fastp_dir}/{samp}.clean.2.fastq.gz
         """
         cmds.append(cmd)
@@ -50,7 +50,7 @@ def is_fastp_done(fqpath_dict: dict, fastp_dir: Path) -> bool:
     :return: bool
     """
     # 跑完 fastp 的 fastq 数量
-    fastp_done_count = len(list(fastp_dir.glob('*.fastp.json')))
+    fastp_done_count = len(list(fastp_dir.glob('*.json')))
     if fastp_done_count == len(fqpath_dict.keys()):
         return True
     return False
