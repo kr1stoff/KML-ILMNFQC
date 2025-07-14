@@ -10,7 +10,7 @@ from src.kml_ilmnfqc.stats import calc_fastp_stats
 
 @click.command()
 @click.option("--input-dir", required=True, type=click.Path(exists=True),
-              help="输入 bcl2fastq 拆分后的 fastq 文件夹, 使用 '_S' 作为分隔符来确定样本名")
+              help="输入 bcl2fastq 拆分后的 fastq 文件夹, 使用 '_' 作为分隔符来确定样本名")
 @click.option("--output-dir", default="ilmn-fqc-result", show_default=True, help="输出文件夹")
 @click.option("--threads", default=8, type=int, show_default=True, help="线程数")
 @click.option("--force", is_flag=True, help="强制重新运行")

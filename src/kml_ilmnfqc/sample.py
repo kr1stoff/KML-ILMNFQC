@@ -14,7 +14,8 @@ def get_sample_path_dict(input_dir: Path) -> dict[str, dict[str, str]]:
     # 遍历输入文件夹中的所有 fastq 文件，并将其添加到样本路径字典中
     sample_path_dict = {}
     for fq in input_dir.glob("*.fastq.gz"):
-        name = fq.name.split("_S")[0]
+        # * 使用 _ 兼容更多 fastq 文件名格式
+        name = fq.name.split("_")[0]
         if "Undetermined" == name:
             logging.debug(f"跳过未拆分的 Undetermined fastq: {name}.")
             continue
