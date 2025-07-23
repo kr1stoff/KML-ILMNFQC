@@ -14,7 +14,6 @@ def calc_fastp_stats(outdir: Path):
     """
     logging.info("计算 fastp 统计信息")
     files_fastp_json = outdir.glob("fastp/*.json")
-    outfile = outdir / "summary.tsv"
     # 质控表格内容
     title = ["Sample", "RawReads", "RawBases", "CleanReads", "CleanBases", "RawQ20",
              "RawQ30", "CleanQ20", "CleanQ30", "CleanAverageLength", "GC"]
@@ -38,4 +37,5 @@ def calc_fastp_stats(outdir: Path):
             js_data["summary"]["after_filtering"]["gc_content"],
         ]
         df.loc[len(df)] = out
-    df.to_csv(outfile, index=False, sep="\t")
+    df.to_csv(outdir / "summary.tsv", index=False, sep="\t")
+    df.to_excel(outdir / "summary.xlsx", index=False)
