@@ -37,5 +37,6 @@ def calc_fastp_stats(outdir: Path):
             js_data["summary"]["after_filtering"]["gc_content"],
         ]
         df.loc[len(df)] = out
+    df.sort_values(by="Sample", inplace=True)
     df.to_csv(outdir / "summary.tsv", index=False, sep="\t")
     df.to_excel(outdir / "summary.xlsx", index=False)
